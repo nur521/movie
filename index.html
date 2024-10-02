@@ -146,14 +146,6 @@
             height: 100vh; /* Вся высота экрана */
         }
 
-        /* Специальные стили для альбомной ориентации */
-        @media (orientation: landscape) {
-            .fullscreen-video {
-                width: 100%;
-                height: 100vh;
-            }
-        }
-
         /* Стили для страницы полного экрана */
         .fullscreen-container {
             display: flex;
@@ -177,6 +169,7 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
+            z-index: 10; /* Убедимся, что кнопка "Выйти" всегда на переднем плане */
         }
 
         .exit-button:hover {
@@ -250,6 +243,12 @@
                 profilePage.style.display = 'flex';
             } else if (page === 'fullscreen') {
                 fullscreenPage.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none'; // Скрываем меню на странице полного экрана
+            }
+
+            // Показываем меню, когда возвращаемся на главную или профиль
+            if (page === 'home' || page === 'profile') {
+                document.getElementById('menuBar').style.display = 'flex'; // Показываем меню
             }
         }
 
