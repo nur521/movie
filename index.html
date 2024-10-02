@@ -164,15 +164,23 @@
             position: relative;
         }
         
-        /* Меню на странице полного экрана */
-        .fullscreen-menu {
+        /* Кнопка выхода */
+        .exit-button {
             position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
+            top: 10px;
+            left: 10px;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .exit-button:hover {
+            background-color: #f40612;
         }
     </style>
 </head>
@@ -212,12 +220,8 @@
     <!-- Полный экран -->
     <div class="page" id="fullscreenPage">
         <div class="fullscreen-container">
+            <button class="exit-button" onclick="showPage('home')">Выйти</button>
             <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <!-- Меню на странице полного экрана -->
-        <div class="fullscreen-menu">
-            <a href="#" onclick="showPage('home')">Главная</a>
-            <a href="#" onclick="showPage('profile')">Профиль</a>
         </div>
     </div>
 
@@ -233,7 +237,6 @@
             const homePage = document.getElementById('homePage');
             const profilePage = document.getElementById('profilePage');
             const fullscreenPage = document.getElementById('fullscreenPage');
-            const menuBar = document.getElementById('menuBar');
 
             // Скрываем все страницы
             homePage.style.display = 'none';
