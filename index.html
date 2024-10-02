@@ -154,9 +154,25 @@
             }
         }
 
-        /* Скрываем меню в полном экране */
-        .hide-menu {
-            display: none;
+        /* Стили для страницы полного экрана */
+        .fullscreen-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        
+        /* Меню на странице полного экрана */
+        .fullscreen-menu {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
         }
     </style>
 </head>
@@ -195,9 +211,14 @@
 
     <!-- Полный экран -->
     <div class="page" id="fullscreenPage">
-        <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <!-- Кнопка выхода из полного экрана -->
-        <button class="button" onclick="showPage('home')">Выйти</button>
+        <div class="fullscreen-container">
+            <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <!-- Меню на странице полного экрана -->
+        <div class="fullscreen-menu">
+            <a href="#" onclick="showPage('home')">Главная</a>
+            <a href="#" onclick="showPage('profile')">Профиль</a>
+        </div>
     </div>
 
     <!-- Меню -->
@@ -219,19 +240,13 @@
             profilePage.style.display = 'none';
             fullscreenPage.style.display = 'none';
 
-            // Показываем меню только если это не полный экран
-            if (page === 'fullscreen') {
-                fullscreenPage.style.display = 'block';
-                menuBar.classList.add('hide-menu');
-            } else {
-                menuBar.classList.remove('hide-menu');
-            }
-
             // Показываем выбранную страницу
             if (page === 'home') {
                 homePage.style.display = 'flex';
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
+            } else if (page === 'fullscreen') {
+                fullscreenPage.style.display = 'block';
             }
         }
 
