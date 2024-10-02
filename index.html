@@ -239,16 +239,13 @@
             // Показываем выбранную страницу
             if (page === 'home') {
                 homePage.style.display = 'flex';
+                document.getElementById('menuBar').style.display = 'flex'; // Показываем меню
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
+                document.getElementById('menuBar').style.display = 'flex'; // Показываем меню
             } else if (page === 'fullscreen') {
                 fullscreenPage.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none'; // Скрываем меню на странице полного экрана
-            }
-
-            // Показываем меню, когда возвращаемся на главную или профиль
-            if (page === 'home' || page === 'profile') {
-                document.getElementById('menuBar').style.display = 'flex'; // Показываем меню
             }
         }
 
