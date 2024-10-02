@@ -97,6 +97,14 @@
             display: flex;
             justify-content: space-around;
             padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .menu.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
         .menu a {
@@ -192,12 +200,9 @@
     <div class="page" id="fullscreenPage">
         <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <br>
-    <br>
-    <br>
 
     <!-- Меню -->
-    <div class="menu">
+    <div class="menu" id="fullscreenMenu">
         <a href="#" onclick="showPage('home')">Главная</a>
         <a href="#" onclick="showPage('profile')">Профиль</a>
     </div>
@@ -208,6 +213,7 @@
             const homePage = document.getElementById('homePage');
             const profilePage = document.getElementById('profilePage');
             const fullscreenPage = document.getElementById('fullscreenPage');
+            const menu = document.getElementById('fullscreenMenu');
 
             // Скрываем все страницы
             homePage.style.display = 'none';
@@ -221,6 +227,7 @@
                 profilePage.style.display = 'flex';
             } else if (page === 'fullscreen') {
                 fullscreenPage.style.display = 'block';
+                menu.style.opacity = '0'; // Скрываем меню изначально
             }
         }
 
@@ -236,6 +243,22 @@
                 alert("Фильмы с тегом " + searchInput + " не найдены.");
             }
         }
+
+        // Логика для показа меню при прокрутке вниз
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", function() {
+            const menu = document.getElementById('fullscreenMenu');
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Прокрутка вниз, показываем меню
+                menu.classList.add('visible');
+            } else {
+                // Прокрутка вверх, скрываем меню
+                menu.classList.remove('visible');
+            }
+            lastScrollTop = scrollTop;
+        });
     </script>
 
 </body>
