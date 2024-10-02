@@ -87,6 +87,34 @@
             background-color: #f40612;
         }
 
+        /* Фиксированное меню снизу */
+        .menu {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            border-top: 2px solid black;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .menu a {
+            color: red;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid black;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: black;
+            color: white;
+        }
+
         /* Стиль для видео */
         .video-container {
             margin: 20px 0;
@@ -106,10 +134,16 @@
             color: white;
             font-size: 16px;
         }
+
+        /* Стиль для скрытых страниц */
+        .page {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="content">
+    <!-- Главная страница -->
+    <div class="content page" id="homePage" style="display: flex;">
         <h1 class="movieland-title">MovieLand</h1>
         <h2 class="subtitle">Фильмы и сериалы без ограничений</h2>
         <p class="description">Найдите свои любимые фильмы по тегам.</p>
@@ -120,9 +154,9 @@
             <button class="button">Найти фильм</button>
         </form>
 
-        <!-- Видео с Google Drive -->
+        <!-- Видео с YouTube -->
         <div class="video-container">
-            <iframe width="560" height="100" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="200" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <!-- Отображение списка тегов -->
@@ -131,7 +165,38 @@
         </div>
     </div>
 
+    <!-- Профиль -->
+    <div class="content page" id="profilePage">
+        <h1 class="movieland-title">Профиль</h1>
+        <h2 class="subtitle">Добро пожаловать в ваш профиль</h2>
+        <p class="description">Здесь вы можете редактировать информацию о себе и просматривать свои фильмы.</p>
+    </div>
+
+    <!-- Меню -->
+    <div class="menu">
+        <a href="#" onclick="showPage('home')">Главная</a>
+        <a href="#" onclick="showPage('profile')">Профиль</a>
+    </div>
+
     <script>
+        // Функция для переключения страниц
+        function showPage(page) {
+            const homePage = document.getElementById('homePage');
+            const profilePage = document.getElementById('profilePage');
+
+            // Скрываем обе страницы
+            homePage.style.display = 'none';
+            profilePage.style.display = 'none';
+
+            // Показываем выбранную страницу
+            if (page === 'home') {
+                homePage.style.display = 'flex';
+            } else if (page === 'profile') {
+                profilePage.style.display = 'flex';
+            }
+        }
+
+        // Поиск по тегам
         function searchMovie(event) {
             event.preventDefault();
             const searchInput = event.target.querySelector('input[type="text"]').value.toLowerCase();
