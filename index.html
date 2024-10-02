@@ -18,7 +18,6 @@
             background-color: #000;
         }
 
-        /* Фон всей страницы */
         body {
             background-image: url('https://avatars.mds.yandex.net/i?id=fb9dea396d1dcda523ba986705d66c8a_l-5326430-images-thumbs&n=13');
             background-size: cover;
@@ -26,7 +25,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Контейнер для контента */
         .content {
             display: flex;
             flex-direction: column;
@@ -35,32 +33,28 @@
             height: auto;
             min-height: 100vh;
             text-align: center;
-            background: rgba(0, 0, 0, 0.6); /* Полупрозрачный слой */
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
         }
 
-        /* Заголовок MovieLand */
         .movieland-title {
             font-size: 60px;
             font-weight: bold;
-            color: #e50914; /* Красный цвет, как у Netflix */
+            color: #e50914;
             letter-spacing: 3px;
             margin-bottom: 20px;
         }
 
-        /* Подзаголовок */
         .subtitle {
             font-size: 24px;
             margin-bottom: 20px;
         }
 
-        /* Текст */
         .description {
             font-size: 18px;
             margin-bottom: 40px;
         }
 
-        /* Поле поиска */
         input[type="text"] {
             padding: 15px;
             width: 300px;
@@ -70,7 +64,6 @@
             margin-right: 10px;
         }
 
-        /* Кнопка */
         .button {
             padding: 15px 30px;
             background-color: #e50914;
@@ -87,7 +80,6 @@
             background-color: #f40612;
         }
 
-        /* Фиксированное меню снизу */
         .menu {
             position: fixed;
             bottom: 0;
@@ -115,7 +107,6 @@
             color: white;
         }
 
-        /* Стиль для видео */
         .video-container {
             margin: 20px 0;
             width: 80%;
@@ -128,25 +119,21 @@
             border-radius: 15px;
         }
 
-        /* Блок для добавления тегов */
         .tags-list {
             margin-top: 10px;
             color: white;
             font-size: 16px;
         }
 
-        /* Стиль для скрытых страниц */
         .page {
             display: none;
         }
 
-        /* Полный экран видео в альбомной ориентации */
         .fullscreen-video {
             width: 100%;
-            height: 100vh; /* Вся высота экрана */
+            height: 100vh;
         }
 
-        /* Стили для страницы полного экрана */
         .fullscreen-container {
             display: flex;
             flex-direction: column;
@@ -155,8 +142,7 @@
             height: 100vh;
             position: relative;
         }
-        
-        /* Кнопка выхода */
+
         .exit-button {
             position: absolute;
             top: 10px;
@@ -169,12 +155,23 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
-            z-index: 10; /* Убедимся, что кнопка "Выйти" всегда на переднем плане */
+            z-index: 10;
         }
 
         .exit-button:hover {
             background-color: #f40612;
         }
+
+        .image-container {
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -192,29 +189,35 @@
 
         <!-- Видео с YouTube -->
         <div class="video-container">
-            <iframe id="movieIframe" width="560" height="200" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <!-- Кнопка "Полный экран" -->
+            <iframe id="movieIframe" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" allowfullscreen></iframe>
             <button class="button" onclick="showPage('fullscreen')">Полный экран</button>
         </div>
 
-        <!-- Отображение списка тегов -->
+        <!-- Новый фильм -->
+        <div class="image-container">
+            <img src="https://avatars.mds.yandex.net/i?id=92c479e73035ffcc92c56904f038139a_l-12501129-images-thumbs&n=13" alt="Кадр из фильма">
+            <button class="button" onclick="showPage('fullscreen2')">Смотреть</button>
+        </div>
+
+        <!-- Теги -->
         <div class="tags-list" id="tagsList">
             Теги: <span id="tags">Время, время фильм, кино про время, фантастика, будущее, триллер</span>
         </div>
     </div>
 
-    <!-- Профиль -->
-    <div class="content page" id="profilePage">
-        <h1 class="movieland-title">Профиль</h1>
-        <h2 class="subtitle">Добро пожаловать в ваш профиль</h2>
-        <p class="description">Здесь вы можете редактировать информацию о себе и просматривать свои фильмы.</p>
-    </div>
-
-    <!-- Полный экран -->
+    <!-- Полный экран (YouTube) -->
     <div class="page" id="fullscreenPage">
         <div class="fullscreen-container">
             <button class="exit-button" onclick="showPage('home')">Выйти</button>
-            <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Полный экран (веб-сайт) -->
+    <div class="page" id="fullscreenPage2">
+        <div class="fullscreen-container">
+            <button class="exit-button" onclick="showPage('home')">Выйти</button>
+            <iframe class="fullscreen-video" src="https://kinogo-films.fm/1088-shou-trumana.html" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -225,31 +228,27 @@
     </div>
 
     <script>
-        // Функция для переключения страниц
         function showPage(page) {
             const homePage = document.getElementById('homePage');
-            const profilePage = document.getElementById('profilePage');
             const fullscreenPage = document.getElementById('fullscreenPage');
+            const fullscreenPage2 = document.getElementById('fullscreenPage2');
 
-            // Скрываем все страницы
             homePage.style.display = 'none';
-            profilePage.style.display = 'none';
             fullscreenPage.style.display = 'none';
+            fullscreenPage2.style.display = 'none';
 
-            // Показываем выбранную страницу
             if (page === 'home') {
                 homePage.style.display = 'flex';
-                document.getElementById('menuBar').style.display = 'flex'; // Показываем меню
-            } else if (page === 'profile') {
-                profilePage.style.display = 'flex';
-                document.getElementById('menuBar').style.display = 'flex'; // Показываем меню
+                document.getElementById('menuBar').style.display = 'flex';
             } else if (page === 'fullscreen') {
                 fullscreenPage.style.display = 'block';
-                document.getElementById('menuBar').style.display = 'none'; // Скрываем меню на странице полного экрана
+                document.getElementById('menuBar').style.display = 'none';
+            } else if (page === 'fullscreen2') {
+                fullscreenPage2.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none';
             }
         }
 
-        // Поиск по тегам
         function searchMovie(event) {
             event.preventDefault();
             const searchInput = event.target.querySelector('input[type="text"]').value.toLowerCase();
