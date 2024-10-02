@@ -139,6 +139,20 @@
         .page {
             display: none;
         }
+
+        /* Полный экран видео в вертикальной ориентации */
+        .fullscreen-video {
+            width: 100%;
+            height: 100vh; /* Вся высота экрана */
+        }
+
+        /* Специальные стили для мобильных устройств */
+        @media (orientation: portrait) {
+            .fullscreen-video {
+                width: 100%;
+                height: 100vh;
+            }
+        }
     </style>
 </head>
 <body>
@@ -156,7 +170,9 @@
 
         <!-- Видео с YouTube -->
         <div class="video-container">
-            <iframe width="560" height="200" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe id="movieIframe" width="560" height="200" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <!-- Кнопка "Полный экран" -->
+            <button class="button" onclick="showPage('fullscreen')">Полный экран</button>
         </div>
 
         <!-- Отображение списка тегов -->
@@ -172,6 +188,11 @@
         <p class="description">Здесь вы можете редактировать информацию о себе и просматривать свои фильмы.</p>
     </div>
 
+    <!-- Полный экран -->
+    <div class="page" id="fullscreenPage">
+        <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
     <!-- Меню -->
     <div class="menu">
         <a href="#" onclick="showPage('home')">Главная</a>
@@ -183,16 +204,20 @@
         function showPage(page) {
             const homePage = document.getElementById('homePage');
             const profilePage = document.getElementById('profilePage');
+            const fullscreenPage = document.getElementById('fullscreenPage');
 
-            // Скрываем обе страницы
+            // Скрываем все страницы
             homePage.style.display = 'none';
             profilePage.style.display = 'none';
+            fullscreenPage.style.display = 'none';
 
             // Показываем выбранную страницу
             if (page === 'home') {
                 homePage.style.display = 'flex';
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
+            } else if (page === 'fullscreen') {
+                fullscreenPage.style.display = 'block';
             }
         }
 
