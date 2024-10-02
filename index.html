@@ -172,6 +172,35 @@
             border-radius: 15px;
         }
 
+        /* Стили для профиля */
+        #profilePage {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-color: #141414;
+        }
+
+        .welcome-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #e50914;
+            margin-bottom: 30px;
+        }
+
+        .balance-text {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .balance-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #e50914;
+        }
     </style>
 </head>
 <body>
@@ -183,25 +212,25 @@
 
         <!-- Поиск по тегам -->
         <form onsubmit="searchMovie(event)">
-            <input type="text" placeholder="Введите тег для поиска" required>
+            <input id="searchInput" type="text" placeholder="Введите тег для поиска" required>
             <button class="button">Найти фильм</button>
         </form>
 
         <!-- Видео с YouTube -->
-        <div class="video-container">
+        <div class="video-container" id="movie1">
             <iframe id="movieIframe" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" allowfullscreen></iframe>
             <button class="button" onclick="showPage('fullscreen')">Полный экран</button>
         </div>
 
         <!-- Новый фильм -->
-        <div class="image-container">
+        <div class="image-container" id="movie2">
             <img src="https://avatars.mds.yandex.net/i?id=92c479e73035ffcc92c56904f038139a_l-12501129-images-thumbs&n=13" alt="Кадр из фильма">
             <button class="button" onclick="showPage('fullscreen3')">Смотреть</button>
         </div>
 
         <!-- Теги -->
         <div class="tags-list" id="tagsList">
-            Теги: <span id="tags">Время, время фильм, кино про время, фантастика, будущее, триллер</span>
+            Теги: <span id="tags">время, время фильм, кино про время, фантастика, будущее, триллер, шоу трумана, труман, фильм, драма</span>
         </div>
     </div>
 
@@ -213,20 +242,19 @@
         </div>
     </div>
 
-    <!-- Полный экран (веб-сайт) -->
-    <div class="page" id="fullscreenPage2">
-        <div class="fullscreen-container">
-            <button class="exit-button" onclick="showPage('home')">Выйти</button>
-            <iframe class="fullscreen-video" src="https://kinogo-films.fm/1088-shou-trumana.html" allowfullscreen></iframe>
-        </div>
-    </div>
-
     <!-- Полный экран (Google Drive) -->
     <div class="page" id="fullscreenPage3">
         <div class="fullscreen-container">
             <button class="exit-button" onclick="showPage('home')">Выйти</button>
             <iframe class="fullscreen-video" src="https://drive.google.com/file/d/1s6szePv1PVLigxmFWwgvl7CsvWUYhuVJ/preview" allowfullscreen></iframe>
         </div>
+    </div>
+
+    <!-- Страница профиля -->
+    <div id="profilePage" class="page">
+        <h1 class="welcome-text">Добро пожаловать!</h1>
+        <p class="balance-text">Ваш баланс:</p>
+        <p class="balance-amount">5000 MovieCoins</p>
     </div>
 
     <!-- Меню -->
@@ -236,16 +264,50 @@
     </div>
 
     <script>
+        // Фильмы и их теги
+        const movies = [
+            {
+                id: 'movie1',
+                title: 'Время',
+                tags: ['время', 'время фильм', 'кино про время', 'фантастика', 'будущее', 'триллер']
+            },
+            {
+                id: 'movie2',
+                title: 'Шоу Трумана',
+                tags: ['шоу трумана', 'труман', 'фильм', 'драма']
+            }
+        ];
+
+        // Функция для поиска фильма по тегам и прокрутки
+        function searchMovie(event) {
+            event.preventDefault();
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            let foundMovie = false;
+
+            movies.forEach(movie => {
+                if (movie.tags.some(tag => tag.includes(searchInput))) {
+                    const movieElement = document.getElementById(movie.id);
+                    movieElement.scrollIntoView({ behavior: 'smooth' });
+                    foundMovie = true;
+                }
+            });
+
+            if (!foundMovie) {
+                alert('Фильмы с таким тегом не найдены.');
+            }
+        }
+
+        // Функция для отображения нужной страницы
         function showPage(page) {
             const homePage = document.getElementById('homePage');
             const fullscreenPage = document.getElementById('fullscreenPage');
-            const fullscreenPage2 = document.getElementById('fullscreenPage2');
             const fullscreenPage3 = document.getElementById('fullscreenPage3');
+            const profilePage = document.getElementById('profilePage');
 
             homePage.style.display = 'none';
             fullscreenPage.style.display = 'none';
-            fullscreenPage2.style.display = 'none';
             fullscreenPage3.style.display = 'none';
+            profilePage.style.display = 'none';
 
             if (page === 'home') {
                 homePage.style.display = 'flex';
@@ -253,27 +315,14 @@
             } else if (page === 'fullscreen') {
                 fullscreenPage.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
-            } else if (page === 'fullscreen2') {
-                fullscreenPage2.style.display = 'block';
-                document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'fullscreen3') {
                 fullscreenPage3.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
-            }
-        }
-
-        function searchMovie(event) {
-            event.preventDefault();
-            const searchInput = event.target.querySelector('input[type="text"]').value.toLowerCase();
-            const tags = document.getElementById('tags').textContent.toLowerCase();
-
-            if (tags.includes(searchInput)) {
-                alert("Найдены фильмы с тегом: " + searchInput);
-            } else {
-                alert("Фильмы с тегом " + searchInput + " не найдены.");
+            } else if (page === 'profile') {
+                profilePage.style.display = 'flex';
+                document.getElementById('menuBar').style.display = 'flex';
             }
         }
     </script>
-
 </body>
 </html>
