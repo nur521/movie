@@ -196,7 +196,7 @@
         <!-- Новый фильм -->
         <div class="image-container">
             <img src="https://avatars.mds.yandex.net/i?id=92c479e73035ffcc92c56904f038139a_l-12501129-images-thumbs&n=13" alt="Кадр из фильма">
-            <button class="button" onclick="showPage('fullscreen2')">Смотреть</button>
+            <button class="button" onclick="showPage('fullscreen3')">Смотреть</button>
         </div>
 
         <!-- Теги -->
@@ -221,6 +221,14 @@
         </div>
     </div>
 
+    <!-- Полный экран (Google Drive) -->
+    <div class="page" id="fullscreenPage3">
+        <div class="fullscreen-container">
+            <button class="exit-button" onclick="showPage('home')">Выйти</button>
+            <iframe class="fullscreen-video" src="https://drive.google.com/file/d/1s6szePv1PVLigxmFWwgvl7CsvWUYhuVJ/preview" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <!-- Меню -->
     <div class="menu" id="menuBar">
         <a href="#" onclick="showPage('home')">Главная</a>
@@ -232,10 +240,12 @@
             const homePage = document.getElementById('homePage');
             const fullscreenPage = document.getElementById('fullscreenPage');
             const fullscreenPage2 = document.getElementById('fullscreenPage2');
+            const fullscreenPage3 = document.getElementById('fullscreenPage3');
 
             homePage.style.display = 'none';
             fullscreenPage.style.display = 'none';
             fullscreenPage2.style.display = 'none';
+            fullscreenPage3.style.display = 'none';
 
             if (page === 'home') {
                 homePage.style.display = 'flex';
@@ -245,6 +255,9 @@
                 document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'fullscreen2') {
                 fullscreenPage2.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none';
+            } else if (page === 'fullscreen3') {
+                fullscreenPage3.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
             }
         }
