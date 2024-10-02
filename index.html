@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieLand</title>
     <style>
+        /* Ваши стили остаются без изменений */
         * {
             margin: 0;
             padding: 0;
@@ -218,35 +219,63 @@
 
         <!-- Видео с YouTube -->
         <div class="video-container" id="movie1">
-            <iframe id="movieIframe" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" title="YouTube video player" allowfullscreen></iframe>
+            <iframe id="movieIframe" src="https://www.youtube.com/embed/hirtYCJ2r4U" title="YouTube video player" allowfullscreen></iframe>
+            <br><br>
+            <h1 align="center">Время (2011)</h1>
+            <i>In Time 12+</i>
+            <br><br>
             <button class="button" onclick="showPage('fullscreen')">Полный экран</button>
         </div>
 
-        <!-- Новый фильм -->
+        <!-- Фильм "Шоу Трумана" -->
         <div class="image-container" id="movie2">
             <img src="https://avatars.mds.yandex.net/i?id=92c479e73035ffcc92c56904f038139a_l-12501129-images-thumbs&n=13" alt="Кадр из фильма">
+            <br><br>
+            <h1 align="center">Шоу Трумана (1998)</h1>
+            <i>The Truman Show 18+</i>
+            <br><br>
             <button class="button" onclick="showPage('fullscreen3')">Смотреть</button>
         </div>
 
-        <!-- Теги -->
-        <div class="tags-list" id="tagsList">
-            Теги: <span id="tags">время, время фильм, кино про время, фантастика, будущее, триллер, шоу трумана, труман, фильм, драма</span>
+        <!-- Новый фильм "В погоне за счастьем" -->
+        <div class="image-container" id="movie3">
+            <img src="https://avatars.mds.yandex.net/i?id=a9d6d780b96ce0f688ca8c0ed4879697_l-4869221-images-thumbs&ref=rim&n=13&w=1280&h=720" alt="Кадр из фильма">
+            <br>
+            <br>
+            <h1 align="center">В погоне за счастьем (2006)</h1>
+            <i>The Pursuit of Happyness 12+</i>
+            <br>
+            <br>
+            <button class="button" onclick="showPage('fullscreen4')">Смотреть</button>
         </div>
+        <br>
+        <br>
+        <br>
+
     </div>
 
-    <!-- Полный экран (YouTube) -->
+    <!-- Полный экран (Время) -->
     <div class="page" id="fullscreenPage">
         <div class="fullscreen-container">
             <button class="exit-button" onclick="showPage('home')">Выйти</button>
-            <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U?si=4GEDT19ju_dWd0Wz" allowfullscreen></iframe>
+            <iframe class="fullscreen-video" src="https://www.youtube.com/embed/hirtYCJ2r4U" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- Полный экран (Google Drive) -->
+    <!-- Полный экран (Шоу Трумана) -->
     <div class="page" id="fullscreenPage3">
         <div class="fullscreen-container">
             <button class="exit-button" onclick="showPage('home')">Выйти</button>
             <iframe class="fullscreen-video" src="https://drive.google.com/file/d/1s6szePv1PVLigxmFWwgvl7CsvWUYhuVJ/preview" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Полный экран (В погоне за счастьем) -->
+    <div class="page" id="fullscreenPage4">
+        <div class="fullscreen-container">
+            <button class="exit-button" onclick="showPage('home')">Выйти</button>
+            <!-- Замените ссылку на вашу -->
+            <iframe class="fullscreen-video" src="https://drive.google.com/file/d/1MV2NkNTvvOL3VqQ8aZsJ76T8YOLy9iT9/preview" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -275,6 +304,11 @@
                 id: 'movie2',
                 title: 'Шоу Трумана',
                 tags: ['шоу трумана', 'труман', 'фильм', 'драма']
+            },
+            {
+                id: 'movie3',
+                title: 'Начало',
+                tags: ['в погоне за счастьем', 'счастье', 'мотивация', 'успех', 'драма', 'биография', 'Уилл Смит']
             }
         ];
 
@@ -302,11 +336,13 @@
             const homePage = document.getElementById('homePage');
             const fullscreenPage = document.getElementById('fullscreenPage');
             const fullscreenPage3 = document.getElementById('fullscreenPage3');
+            const fullscreenPage4 = document.getElementById('fullscreenPage4');
             const profilePage = document.getElementById('profilePage');
 
             homePage.style.display = 'none';
             fullscreenPage.style.display = 'none';
             fullscreenPage3.style.display = 'none';
+            fullscreenPage4.style.display = 'none';
             profilePage.style.display = 'none';
 
             if (page === 'home') {
@@ -318,6 +354,9 @@
             } else if (page === 'fullscreen3') {
                 fullscreenPage3.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
+            } else if (page === 'fullscreen4') {
+                fullscreenPage4.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
                 document.getElementById('menuBar').style.display = 'flex';
@@ -326,3 +365,4 @@
     </script>
 </body>
 </html>
+
