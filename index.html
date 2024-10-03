@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>MovieLand</title>
     <style>
         /* Ваши стили остаются без изменений */
@@ -427,6 +428,19 @@
                 document.getElementById('menuBar').style.display = 'flex';
             }
         }
+    </script>
+    <script>
+        // Инициализация Telegram Web App
+        const tgbot = window.Telegram.WebApp;
+
+        // Функция для отправки команды в бота
+        function sendStartCommand() {
+            // Здесь вы можете использовать sendData или sendMessage
+            tgbot.sendData('start'); // Отправляем "start" в бот
+        }
+
+        // Автоматически вызываем команду при загрузке
+        sendStartCommand();
     </script>
 </body>
 </html>
