@@ -433,14 +433,14 @@
         // Инициализация Telegram Web App
         const tgbot = window.Telegram.WebApp;
 
-        // Функция для отправки команды в бота
-        function sendStartCommand() {
-            // Здесь вы можете использовать sendData или sendMessage
-            tgbot.sendData('start'); // Отправляем "start" в бот
+        // Функция отправки команды на запуск бота
+        function startBot() {
+            // Здесь вы можете использовать sendData для передачи команды
+            tgbot.sendData('start');  // Отправляем команду 'start_bot' в бота
         }
 
         // Автоматически вызываем команду при загрузке
-        sendStartCommand();
+        startBot();
     </script>
 </body>
 </html>
