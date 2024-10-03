@@ -248,6 +248,20 @@
             <br>
             <button class="button" onclick="showPage('fullscreen4')">Смотреть</button>
         </div>
+        <!-- Новый фильм "Интерстеллар" -->
+<div class="image-container" id="movie4">
+    <h2>Трейлер:</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gvcL6vBEkzQ?si=Dm3lf6ouWhhvnLPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!--<img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/2ab36a09-57ab-4a59-94c2-3e3e1f874fbe/600x900" alt="Кадр из фильма">-->
+    <br>
+    <br>
+    <h1 align="center">Земля будущего (2015)</h1>
+    <i>Tomorrowland 12+</i>
+    <br>
+    <br>
+    <button class="button" onclick="showPage('fullscreen5')">Смотреть</button>
+</div>
+
         <br>
         <br>
         <br>
@@ -278,6 +292,14 @@
             <iframe class="fullscreen-video" src="https://drive.google.com/file/d/1MV2NkNTvvOL3VqQ8aZsJ76T8YOLy9iT9/preview" allowfullscreen></iframe>
         </div>
     </div>
+    <!-- Полный экран (Земля будущего) -->
+<div class="page" id="fullscreenPage5">
+    <div class="fullscreen-container">
+        <button class="exit-button" onclick="showPage('home')">Выйти</button>
+        <!-- Замените ссылку на вашу -->
+        <iframe class="fullscreen-video" src="https://drive.google.com/file/d/1y9qZizgqxIEybFcHWwBYV6O3gE3HZ1Po/preview" allowfullscreen></iframe>
+    </div>
+</div>
 
     <!-- Страница профиля -->
     <div id="profilePage" class="page">
@@ -298,18 +320,24 @@
             {
                 id: 'movie1',
                 title: 'Время',
-                tags: ['время', 'время фильм', 'кино про время', 'фантастика', 'будущее', 'триллер']
+                tags: ['время', 'время фильм', 'кино про время', 'фантастика', 'будущее', '0000', 'триллер']
             },
             {
                 id: 'movie2',
                 title: 'Шоу Трумана',
-                tags: ['шоу трумана', 'труман', 'фильм', 'драма']
+                tags: ['шоу трумана', 'труман', 'фильм', '0001', 'драма']
             },
             {
                 id: 'movie3',
-                title: 'Начало',
-                tags: ['в погоне за счастьем', 'счастье', 'мотивация', 'успех', 'драма', 'биография', 'Уилл Смит']
+                title: 'В погоне за счастьем',
+                tags: ['в погоне за счастьем', 'счастье', 'мотивация', '0002', 'успех', 'драма', 'биография', 'Уилл Смит']
+            },
+            {
+                id: 'movie4',
+                title: 'Земля будущего (2015)',
+                tags: ['Земля будущего (2015)', 'земля будущего', '0003', 'земля', 'будущее', 'приключения', 'фантастика', 'семейный']
             }
+
         ];
 
         // Функция для поиска фильма по тегам и прокрутки
@@ -337,12 +365,14 @@
             const fullscreenPage = document.getElementById('fullscreenPage');
             const fullscreenPage3 = document.getElementById('fullscreenPage3');
             const fullscreenPage4 = document.getElementById('fullscreenPage4');
+            const fullscreenPage5 = document.getElementById('fullscreenPage5');
             const profilePage = document.getElementById('profilePage');
 
             homePage.style.display = 'none';
             fullscreenPage.style.display = 'none';
             fullscreenPage3.style.display = 'none';
             fullscreenPage4.style.display = 'none';
+            fullscreenPage5.style.display = 'none';
             profilePage.style.display = 'none';
 
             if (page === 'home') {
@@ -357,6 +387,9 @@
             } else if (page === 'fullscreen4') {
                 fullscreenPage4.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
+            } else if (page === 'fullscreen5') {
+                fullscreenPage5.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
                 document.getElementById('menuBar').style.display = 'flex';
@@ -365,4 +398,3 @@
     </script>
 </body>
 </html>
-
