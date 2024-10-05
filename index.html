@@ -294,6 +294,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <br>
     <button class="button" onclick="showPage('fullscreen6')">Смотреть</button>
 </div>
+<!-- Новый фильм "Ламборгини: Человек-легенда" -->
+<div class="image-container" id="movie6">
+    <h2>Трейлер:</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/QT-rtYPITks?si=1QVp1O41zHZeN1T9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <br>
+    <br>
+    <h1 align="center">Ламборгини: Человек-легенда (2022)</h1>
+    <i>Lamborghini: The Man Behind the Legend 18+</i>
+    <br>
+    <br>
+    <button class="button" onclick="showPage('fullscreen7')">Смотреть</button>
+</div>
+
 
         <br>
         <br>
@@ -341,6 +354,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Замените ссылку на вашу -->
         <iframe class="fullscreen-video" src="https://www.youtube.com/embed/FZkPTDj7cwk?si=yH0HxcfCgG_Pb1Ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
+    </div>
+    <!-- Полный экран (Ламборгини: Человек-легенда) -->
+<div class="page" id="fullscreenPage7">
+    <div class="fullscreen-container">
+        <button class="exit-button" onclick="showPage('home')">Выйти</button>
+        <iframe class="fullscreen-video" src="https://www.youtube.com/embed/bS8xIToS1e4?si=KdSfQPoSw_HAoYVK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>
+
     
 </div>
     <!-- Страница профиля -->
@@ -383,7 +405,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 id: 'movie5',
                 title: 'Кто я (2014)',
                 tags: ['Кто я (2014)', 'кто я', '0004', 'хакеры', 'анонимус', 'програмирования', 'взлом', 'фантастика', 'триллер', 'драма', 'криминал', 'детектив']
+            },
+            {
+                id: 'movie6',
+                title: 'Ламборгини: Человек-легенда',
+                tags: ['ламборгини', 'легенда', 'фильм', '2022', 'биография', 'драма', '0005', '18+']
             }
+
 
         ];
 
@@ -414,6 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const fullscreenPage4 = document.getElementById('fullscreenPage4');
             const fullscreenPage5 = document.getElementById('fullscreenPage5');
             const fullscreenPage6 = document.getElementById('fullscreenPage6');
+            const fullscreenPage7 = document.getElementById('fullscreenPage7');
             const profilePage = document.getElementById('profilePage');
 
             homePage.style.display = 'none';
@@ -422,6 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             fullscreenPage4.style.display = 'none';
             fullscreenPage5.style.display = 'none';
             fullscreenPage6.style.display = 'none';
+            fullscreenPage7.style.display = 'none';
             profilePage.style.display = 'none';
 
             if (page === 'home') {
@@ -441,6 +471,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'fullscreen6') {
                 fullscreenPage6.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none';
+            } else if (page === 'fullscreen7') {
+                fullscreenPage7.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
