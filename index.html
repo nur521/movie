@@ -318,6 +318,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <br>
     <button class="button" onclick="showPage('fullscreen8')">Смотреть</button>
 </div>
+<!-- Новый фильм "Уроки Фарси" -->
+<div class="image-container" id="movie8">
+    <h2>Трейлер:</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/PIJ6K8GjidQ?si=O8r58RcMbLvx9Crn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <br>
+    <br>
+    <h1 align="center">Уроки фарси (2020)</h1>
+    <i>Persian Lessons 18+</i>
+    <br>
+    <br>
+    <button class="button" onclick="showPage('fullscreen9')">Смотреть</button>
+</div>
 
 
         <br>
@@ -382,6 +394,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <iframe class="fullscreen-video" src="https://drive.google.com/file/d/12lyO3Z02UlFGNXEPLjkId5REEB9pWlAl/preview" allowfullscreen></iframe>
     </div>
 </div>
+<!-- Полный экран (соцсеть) -->
+<div class="page" id="fullscreenPage9">
+    <div class="fullscreen-container">
+        <button class="exit-button" onclick="showPage('home')">Выйти</button>
+        <!-- Замените ссылку на видео -->
+        <iframe class="fullscreen-video" src="https://www.youtube.com/embed/bxhoMzXt1IM?si=ETub8M6W0vsZAIek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>
+
 
 
     
@@ -436,6 +457,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 id: 'movie7',
                 title: 'Двадцать одно',
                 tags: ['двадцать одно', '21', '0006', 'казино', 'карты', 'триллер', 'криминал', 'драма']
+            },
+            {
+                id: 'movie8',
+                title: 'Социальная сеть',
+                tags: ['немцы', 'драма', 'второя война', '0007', 'уроки фарси']
             }
 
 
@@ -470,6 +496,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const fullscreenPage6 = document.getElementById('fullscreenPage6');
             const fullscreenPage7 = document.getElementById('fullscreenPage7');
             const fullscreenPage8 = document.getElementById('fullscreenPage8');
+            const fullscreenPage9 = document.getElementById('fullscreenPage9');
             const profilePage = document.getElementById('profilePage');
 
             homePage.style.display = 'none';
@@ -480,6 +507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             fullscreenPage6.style.display = 'none';
             fullscreenPage7.style.display = 'none';
             fullscreenPage8.style.display = 'none';
+            fullscreenPage9.style.display = 'none';
             profilePage.style.display = 'none';
 
             if (page === 'home') {
@@ -505,6 +533,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'fullscreen8') {
                 fullscreenPage8.style.display = 'block';
+                document.getElementById('menuBar').style.display = 'none';
+            } else if (page === 'fullscreen9') {
+                fullscreenPage9.style.display = 'block';
                 document.getElementById('menuBar').style.display = 'none';
             } else if (page === 'profile') {
                 profilePage.style.display = 'flex';
